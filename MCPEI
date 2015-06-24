@@ -1,0 +1,64 @@
+var time = Math.floor(Math.random()*(400)+(200));
+var gived=false;
+var RER = {
+    newCharacter:function(itemid,texture,spawnname,charactername,chat1,chat2,chat3,skin) {
+        ModPE.setItem(itemid,texture,0,spawnname,1);
+        Item.setCategory(itemid,3);
+        RER.allcharacter.push([itemid,charactername,skin]);
+        RER.chats.push([charactername,chat1,chat2,chat3])
+    },
+    allcharacter:[],
+    chats:[],
+    spawned:[],
+    chat:function(str) {
+        clientMessage(ChatColor.DARK_RED + "[RER] " + ChatColor.WHITE +str);
+    },
+    characterchat:function(name,str) {
+        clientMessage(ChatColor.GREEN+"["+name+"] " + ChatColor.BLUE +str);
+    }
+}
+
+function useItem(x,y,z,i,b,s) {
+    for(var t in RER.allcharacter) {
+        if(i==RER.allcharacter[t][0]) {
+            var MCPEI = Level.spawnMob(x+0.5,y+1,z+0.5,EntityType.PLAYER,RER.allcharacter[t][2])
+            Entity.setNameTag(MCPEI,RER.allcharacter[t][1]);
+            Entity.setRenderType(MCPEI,3);
+            RER.spawned.push([RER.allcharacter[t][1],0]);
+        }
+    }
+}
+
+function modTick() {
+    randChat();
+    if(Level.getGameMode()==1&&!gived) {
+        for(var p=0;p<RER.allcharacter.length;p++) {
+            Player.addItemCreativeInv(RER.allcharacter[p][0],1);
+            gived=true;
+        }
+    }
+}
+
+function randChat() {
+    time--;
+    if(time<=0) {
+        var allent = Entity.getAll();
+        for(var k=0;k<allent.length;k++) {
+            for(var i in RER.chats) {
+            if(Entity.getNameTag(allent[k])==RER.chats[i][0]) {
+                var rnd = Math.floor(Math.random()*(3)+(1))
+                RER.characterchat(RER.chats[i][0],RER.chats[i][rnd])
+                break;
+            }
+            }
+        }
+        time=Math.floor(Math.random()*(400)+(200));
+    }
+}
+
+function newLevel() {
+    RER.chat("MCPEI Mod by Red Eagle Reborn Team")
+}
+
+RER.newCharacter(800,"spawn_egg","Spawn Char","Clone baru","halo","siapa lu :v","elu NOOB ! :v","mob/char.png")
+RER.newCharacter(801,"comparator","Spawn Char1","Clone","newbie","bosen","haaah","mob/char.png")
