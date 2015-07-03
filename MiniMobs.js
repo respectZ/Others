@@ -2,11 +2,12 @@
 ModPE.setItem(1000,"spawn_egg",12,"Spawn Baby Zombie",1);
 ModPE.setItem(1001,"spawn_egg",13,"Spawn Baby Zombie Pigman",1);
 ModPE.setItem(1002,"spawn_egg",0,"Spawn Chicken Jockey",1);
-ModPE.setItem(1003,"spawn_egg",6,"Spawn Baby Creeper")
+ModPE.setItem(1003,"spawn_egg",6,"Spawn Baby Creeper",1);
 var ready=true; 
 Item.setCategory(1000,3);
 Item.setCategory(1001,3);
-Item.setCategory(1002,3)
+Item.setCategory(1002,3);
+Item.setCategory(1003,3);
 
 function modTick() {
     if(ready) {
@@ -16,7 +17,7 @@ function modTick() {
             Player.addItemCreativeInv(1001,1);
             Player.addItemCreativeInv(1002,1);
             Player.addItemCreativeInv(1003,1);
-            Player.addItemCreativeInv(383,1,41)
+            Player.addItemCreativeInv(383,1,41);
         }
     }
 }
@@ -41,22 +42,22 @@ function useItem(x,y,z,i,b,s) {
             jock = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],32);
         }
         if(rnd>10) {
-            jock = Level.spawnMoB(sides[s][0],sides[s][1],sides[s][2],33,"mob/babycreeper.png");
+            jock = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],33,"mob/babycreeper.png");
             Entity.setRenderType(jock,babycreeperRenderType.renderType);
         }
         Entity.setAnimalAge(jock,-24000);
         var chicken = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],10);
-        rideAnimal(jock,chicken)
+        rideAnimal(jock,chicken);
     }
     if(i==1003) {
-        var creepy = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],33,"mob/babycreeper.png")
-        Entity.setRenderType(creepy,babycreeperRenderType.renderType)
+        var creepy = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],33,"mob/babycreeper.png");
+        Entity.setRenderType(creepy,babycreeperRenderType.renderType);
     }
 }
 
 function entityAddedHook(e) {
     if(Entity.getEntityTypeId(e)==41) {
-        Entity.setHealth(e,10)
+        Entity.setHealth(e,10);
     }
 }
 function addbabycreeperRenderType(renderer){
