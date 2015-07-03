@@ -49,7 +49,7 @@ function useItem(x,y,z,i,b,s) {
         if(rnd>10) {
             jock = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],33,"mob/babycreeper.png");
             Entity.setRenderType(jock,babycreeperRenderType.renderType);
-            Entity.setCollisionSize(jock,-1,-1);
+            Entity.setCollisionSize(jock,0.1,0.1);
         }
         var chicken = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],10);
         rideAnimal(jock,chicken);
@@ -57,12 +57,12 @@ function useItem(x,y,z,i,b,s) {
     if(i==1003) {
         var creepy = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],33,"mob/babycreeper.png");
         Entity.setRenderType(creepy,babycreeperRenderType.renderType);
-        Entity.setCollisionSize(creepy,-1,-1);
+        Entity.setCollisionSize(creepy,0.1,0.1);
     }
     if(i==1004) {
-        var skele = Leevl.spawnMob(sides[s][0],sides[s][1],sides[s][2],34,"mob/babyskeleton.png");
+        var skele = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],34,"mob/babyskeleton.png");
         Entity.setAnimalAge(skele,-24000);
-        Entity.setCollisionSize(skele,-1,-1);
+        Entity.setCollisionSize(skele,0.1,0.1);
         Entity.setRenderType(skele,babyskeletonRenderType.renderType);
     }
 }
