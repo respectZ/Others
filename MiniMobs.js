@@ -12,7 +12,7 @@ Item.setCategory(1003,3);
 Item.setCategory(1004,3);
 
 ModPE.overrideTexture("images/mob/babycreeper.png","https://dl.dropboxusercontent.com/s/uvwjqtxjflyp7s7/babycreeper.png?dl=0")
-ModPE.overrideTexture("images/mob/babyskeleton.png","https://dl.dropboxusercontent.com/s/uvwjqtxjflyp7s7/babycreeper.png?dl=0")
+ModPE.overrideTexture("images/mob/babyskeleton.png","https://dl.dropboxusercontent.com/s/xf2uoxadl8z36q3/babyskeleton.png?dl=0")
 
 function modTick() {
     if(ready) {
