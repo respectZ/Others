@@ -27,7 +27,7 @@ function modTick() {
         }
     }
     load();
-    //spawnRandom();
+    spawnRandom();
 }
 
 function useItem(x,y,z,i,b,s) {
@@ -79,11 +79,6 @@ function useItem(x,y,z,i,b,s) {
     }
 }
 
-function entityAddedHook(e) {
-    if(Entity.getEntityTypeId(e)==41) {
-        Entity.setHealth(e,10);
-    }
-}
 function addbabycreeperRenderType(renderer){
 var model = renderer.getModel();
 var head = model.getPart("head").clear();
