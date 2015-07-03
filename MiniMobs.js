@@ -10,6 +10,8 @@ Item.setCategory(1001,3);
 Item.setCategory(1002,3);
 Item.setCategory(1003,3);
 Item.setCategory(1004,3);
+var skeleton = [];
+var creeper = [];
 
 function modTick() {
     if(ready) {
@@ -36,7 +38,7 @@ function useItem(x,y,z,i,b,s) {
         Entity.setAnimalAge(zm2,-24000);
     }
     if(i==1002) {
-        var rnd=Math.floor(Math.random()*15);
+        var rnd=Math.floor(Math.random()*20);
         var jock;
         if(rnd<6) {
             jock = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],36);
@@ -46,10 +48,18 @@ function useItem(x,y,z,i,b,s) {
             jock = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],32);
             Entity.setAnimalAge(jock,-24000);
         }
-        if(rnd>10) {
+        if(rnd>10&&rnd<=15) {
             jock = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],33,"mob/babycreeper.png");
             Entity.setRenderType(jock,babycreeperRenderType.renderType);
             Entity.setCollisionSize(jock,0.1,0.1);
+            creeper.push(Entity.getUniqueId(jock));
+        }
+        if(rnd>15) {
+            jock = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],34,"mob/babyskeleton.png");
+            Entity.setRenderType(jock,babyskeletonRenderType.renderType);
+            Entity.setCollisionSize(jock,0.1,0.1);
+            Entity.setCarriedItem(jock,0,0,0)
+            skeleton.push(Entity.getUniqueId(jock));
         }
         var chicken = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],10);
         rideAnimal(jock,chicken);
@@ -58,12 +68,15 @@ function useItem(x,y,z,i,b,s) {
         var creepy = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],33,"mob/babycreeper.png");
         Entity.setRenderType(creepy,babycreeperRenderType.renderType);
         Entity.setCollisionSize(creepy,0.1,0.1);
+        creeper.push(Entity.getUniqueId(creepy));
     }
     if(i==1004) {
         var skele = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],34,"mob/babyskeleton.png");
         Entity.setAnimalAge(skele,-24000);
         Entity.setCollisionSize(skele,0.1,0.1);
         Entity.setRenderType(skele,babyskeletonRenderType.renderType);
+        Entity.setCarriedItem(skele,0,0,0);
+        skeleton.push(Entity.getUniqueId(skele));
     }
 }
 
@@ -122,4 +135,21 @@ addbabyskeletonRenderType(babyskeletonRenderType);
 
 function leaveGame() {
     ready=true;
+}
+
+function newLevel() {
+    load();
+}
+
+function load() {
+    var all = Entity.getAll();
+    for(var i in all) {
+        var ent = all[i];
+        if(Entity.getRenderType(ent)==babycreeperRenderType.renderType) {
+            Entity.setMobSkin(ent,"mob/babycreeper.png");
+        }
+        if(Entity.getRenderType(ent)==babyskeletonRenderType.renderType) {
+            Entity.setMobSkin(ent,"mob/babyskeleton.png")
+        }
+    }
 }
