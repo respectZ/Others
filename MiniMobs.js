@@ -24,7 +24,7 @@ function modTick() {
         }
     }
     load();
-    //spawnRandom();
+    spawnRandom();
 }
 
 function useItem(x,y,z,i,b,s) {
@@ -141,10 +141,10 @@ function load() {
     var all = Entity.getAll();
     for(var i in all) {
         var ent = all[i];
-        if(Entity.getMobSkin(ent)=="mob/creeper.png") {
+        if(Entity.getMobSkin(ent)=="mob/creeper.png"&&Entity.getRenderType(ent)>100) {
             Entity.setMobSkin(ent,"mob/babycreeper.png");
         }
-        if(Entity.getMobSkin(ent)=="mob/skeleton.png") {
+        if(Entity.getMobSkin(ent)=="mob/skeleton.png"&&Entity.getRenderType(ent)>100) {
             Entity.setMobSkin(ent,"mob/babyskeleton.png");
             Entity.setCarriedItem(ent,0,0,0);
         }
