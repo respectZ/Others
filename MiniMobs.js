@@ -10,8 +10,6 @@ Item.setCategory(1001,3);
 Item.setCategory(1002,3);
 Item.setCategory(1003,3);
 Item.setCategory(1004,3);
-var skeleton = [];
-var creeper = [];
 
 function modTick() {
     if(ready) {
@@ -25,6 +23,8 @@ function modTick() {
             Player.addItemCreativeInv(383,1,41);
         }
     }
+    load();
+    //spawnRandom();
 }
 
 function useItem(x,y,z,i,b,s) {
@@ -52,14 +52,12 @@ function useItem(x,y,z,i,b,s) {
             jock = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],33,"mob/babycreeper.png");
             Entity.setRenderType(jock,babycreeperRenderType.renderType);
             Entity.setCollisionSize(jock,0.1,0.1);
-            creeper.push(Entity.getUniqueId(jock));
         }
         if(rnd>15) {
             jock = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],34,"mob/babyskeleton.png");
             Entity.setRenderType(jock,babyskeletonRenderType.renderType);
             Entity.setCollisionSize(jock,0.1,0.1);
             Entity.setCarriedItem(jock,0,0,0)
-            skeleton.push(Entity.getUniqueId(jock));
         }
         var chicken = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],10);
         rideAnimal(jock,chicken);
@@ -68,7 +66,6 @@ function useItem(x,y,z,i,b,s) {
         var creepy = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],33,"mob/babycreeper.png");
         Entity.setRenderType(creepy,babycreeperRenderType.renderType);
         Entity.setCollisionSize(creepy,0.1,0.1);
-        creeper.push(Entity.getUniqueId(creepy));
     }
     if(i==1004) {
         var skele = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],34,"mob/babyskeleton.png");
@@ -76,7 +73,6 @@ function useItem(x,y,z,i,b,s) {
         Entity.setCollisionSize(skele,0.1,0.1);
         Entity.setRenderType(skele,babyskeletonRenderType.renderType);
         Entity.setCarriedItem(skele,0,0,0);
-        skeleton.push(Entity.getUniqueId(skele));
     }
 }
 
@@ -138,18 +134,35 @@ function leaveGame() {
 }
 
 function newLevel() {
-    load();
+clientMessage(ChatColor.AQUA+"[MM] " +ChatColor.WHITE + "Mini Mobs v0.1 by respectZ")
 }
 
 function load() {
     var all = Entity.getAll();
     for(var i in all) {
         var ent = all[i];
-        if(Entity.getRenderType(ent)==babycreeperRenderType.renderType) {
+        if(Entity.getMobSkin(ent)=="mob/creeper.png") {
             Entity.setMobSkin(ent,"mob/babycreeper.png");
         }
-        if(Entity.getRenderType(ent)==babyskeletonRenderType.renderType) {
-            Entity.setMobSkin(ent,"mob/babyskeleton.png")
+        if(Entity.getMobSkin(ent)=="mob/skeleton.png") {
+            Entity.setMobSkin(ent,"mob/babyskeleton.png");
+            Entity.setCarriedItem(ent,0,0,0);
         }
+    }
+}
+function spawnRandom() {
+    var rnd = Math.floor(Math.random()*2500);
+    switch(rnd) {
+        case 1:
+            var micc = Level.spawnMob(Player.getX()+10,Player.getY()+5,Player.getZ()+10,33,"mob/babycreeper.png");
+            Entity.setRenderType(micc,babycreeperRenderType.renderType);
+            Entity.setCollisionSize(micc,0.1,0.1);
+            break;
+        case 2:
+            var miss = Level.spawnMob(Player.getX()+10,Player.getY()+5,Player.getZ()+10,34,"mob/babyskeleton.png");
+            Entity.setCarriedItem(miss,0,0,0);
+            Entity.setRenderType(miss,babyskeletonRenderType.renderType);
+            Entity.setCollisionSize(miss,0.1,0.1);
+            break;
     }
 }
