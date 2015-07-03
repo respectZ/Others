@@ -27,7 +27,7 @@ function modTick() {
         }
     }
     load();
-    spawnRandom();
+    //spawnRandom();
 }
 
 function useItem(x,y,z,i,b,s) {
@@ -140,11 +140,11 @@ function load() {
     var all = Entity.getAll();
     for(var i in all) {
         var ent = all[i];
-        if(Entity.getMobSkin(ent)=="mob/creeper.png"&&Entity.getRenderType(ent)>100) {
+        if(Entity.getMobSkin(ent)=="mob/creeper.png"&&Entity.getRenderType(ent)>3500) {
             Entity.setMobSkin(ent,"mob/babycreeper.png");
             Entity.setCollisionSize(ent,0.1,0.1)
         }
-        if(Entity.getMobSkin(ent)=="mob/skeleton.png"&&Entity.getRenderType(ent)>100) {
+        if(Entity.getMobSkin(ent)=="mob/skeleton.png"&&Entity.getRenderType(ent)>3500) {
             Entity.setMobSkin(ent,"mob/babyskeleton.png");
             Entity.setCarriedItem(ent,0,0,0);
             Entity.setCollisionSize(ent,0.1,0.1)
