@@ -6,16 +6,17 @@ function useItem(x,y,z,i,b,s) {
     if(i==2002) {
         var wither = Level.spawnMob(x,y+1,z,32,"mob/wither_skeleton.png");
         Entity.setRenderType(wither,witherRenderType.renderType);
-        wth.push(Entity.getUniqueId(wither));
+        Entity.setCarriedItem(wither,272,1,0)
+        //wth.push(Entity.getUniqueId(wither));
     }
 }
 
 function leaveGame() {
-    ModPE.saveData("wither"+Level.getWorldDir(),wth.toString())
+    //ModPE.saveData("wither"+Level.getWorldDir(),wth.toString())
 }
 
 function newLevel() {
-    load();
+    //load();
 }
 
 function load() {
@@ -51,17 +52,17 @@ var lArm = model.getPart("leftArm").clear();
 var rLeg = model.getPart("rightLeg").clear();
 var lLeg = model.getPart("leftLeg").clear();
 head.setTextureOffset( 0, 0);
-head.addBox(-4,-8,-4, 8, 8, 8);
+head.addBox(-4,-8,-4, 8, 8, 8););
 body.setTextureOffset( 16, 16);
-body.addBox(-4,0,-2, 8, 12, 4);
+body.addBox(-4,0,-2, 8, 12, 4););
 rArm.setTextureOffset( 40, 16);
-rArm.addBox(-1,0,-1, 2, 12, 2);
+rArm.addBox(-1,0,-1, 2, 12, 2););
 lArm.setTextureOffset( 40, 16);
-lArm.addBox(-1,0,-1, 2, 12, 2);
+lArm.addBox(-1,0,-1, 2, 12, 2););
 rLeg.setTextureOffset( 0, 16);
-rLeg.addBox(-4,7,-1, 2, 12, 2);
+rLeg.addBox(-4,2,-1, 2, 12, 2););
 lLeg.setTextureOffset( 0, 16);
-lLeg.addBox(2,8,-1, 2, 12, 2);
+lLeg.addBox(2,2,-1, 2, 12, 2););
 }
 var witherRenderType = Renderer.createHumanoidRenderer();
 addwitherRenderType(witherRenderType);
