@@ -37,21 +37,24 @@ function useItem(x,y,z,i,b,s) {
         var jock;
         if(rnd<6) {
             jock = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],36);
+            Entity.setAnimalAge(jock,-24000);
         }
         if(rnd>=6&&rnd<=10) {
             jock = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],32);
+            Entity.setAnimalAge(jock,-24000);
         }
         if(rnd>10) {
             jock = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],33,"mob/babycreeper.png");
             Entity.setRenderType(jock,babycreeperRenderType.renderType);
+            Entity.setCollisionSize(jock,0.5,0.5);
         }
-        Entity.setAnimalAge(jock,-24000);
         var chicken = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],10);
         rideAnimal(jock,chicken);
     }
     if(i==1003) {
         var creepy = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],33,"mob/babycreeper.png");
         Entity.setRenderType(creepy,babycreeperRenderType.renderType);
+        Entity.setCollisionSize(creepy,0.5,0.5);
     }
 }
 
