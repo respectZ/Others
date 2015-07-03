@@ -11,6 +11,9 @@ Item.setCategory(1002,3);
 Item.setCategory(1003,3);
 Item.setCategory(1004,3);
 
+ModPE.overrideTexture("images/mob/babycreeper.png","https://dl.dropboxusercontent.com/s/uvwjqtxjflyp7s7/babycreeper.png?dl=0")
+ModPE.overrideTexture("images/mob/babyskeleton.png","https://dl.dropboxusercontent.com/s/uvwjqtxjflyp7s7/babycreeper.png?dl=0")
+
 function modTick() {
     if(ready) {
         if(Level.getGameMode()==1) {
@@ -143,10 +146,12 @@ function load() {
         var ent = all[i];
         if(Entity.getMobSkin(ent)=="mob/creeper.png"&&Entity.getRenderType(ent)>100) {
             Entity.setMobSkin(ent,"mob/babycreeper.png");
+            Entity.setCollisionSize(ent,0.1,0.1)
         }
         if(Entity.getMobSkin(ent)=="mob/skeleton.png"&&Entity.getRenderType(ent)>100) {
             Entity.setMobSkin(ent,"mob/babyskeleton.png");
             Entity.setCarriedItem(ent,0,0,0);
+            Entity.setCollisionSize(ent,0.1,0.1)
         }
     }
 }
