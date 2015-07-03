@@ -27,7 +27,7 @@ function modTick() {
         }
     }
     load();
-    spawnRandom();
+    //spawnRandom();
 }
 
 function useItem(x, y, z, i, b, s) {
