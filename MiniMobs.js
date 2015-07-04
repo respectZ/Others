@@ -102,12 +102,12 @@ function modTick() {
 function randomSpawn(random) {
     switch(random) {
         case 1:
-            var creepy = Level.spawnMob(sides[s][0],sides[s][1],sides[s][2],33,"mob/babycreeper.png");
+            var creepy = Level.spawnMob(Player.getX()+20+0.5,Player.getY()+3,Player.getZ()+0.5,33,"mob/babycreeper.png");
             Entity.setRenderType(creepy,babycreeperRenderType.renderType);
             Entity.setCollisionSize(creepy,0.1,0.1);
             break;
         case 2:
-            var skelety =Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,34,"mob/babyskeleton.png");
+            var skelety =Level.spawnMob(Player.getX()+20+0.5,Player.getY()+3,Player.getZ()+0.5,34,"mob/babyskeleton.png");
             Entity.setRenderType(skelety,babyskeletonRenderType.renderType);
             Entity.setCarriedItem(skelety,0,0,0);
             Entity.setCollisionSize(skelety,0.1,0.1);
