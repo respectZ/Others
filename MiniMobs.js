@@ -75,10 +75,10 @@ function useItem(x,y,z,i,b,s) {
                 }
             } else {
                 if(i==2100) {
-                    Level.setNewSpawner(x,y,z,33);
+                    Level.setSpawnerEntityType(x,y,z,33);
                 }
                 if(i==2101) {
-                    Level.setNewSpawner(x,y,z,34)
+                    Level.setSpawnerEntityType(x,y,z,34)
                 }
             }
         }
