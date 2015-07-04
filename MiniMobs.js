@@ -47,15 +47,15 @@ body.addBox(1,20,-1.5, 1, 4, 1);
 }
 var babyskeletonRenderType = Renderer.createHumanoidRenderer();
 addbabyskeletonRenderType(babyskeletonRenderType);
-
-setNewSpawner(2100,"spawn_egg",6,"Baby Creeper");
-setNewSpawner(2101,"spawn_egg",9,"Baby Skeleton");
-var spawner = [];
 setNewSpawner = function(id,tex,data,name) {
     ModPE.setItem(id,tex,data,"Spawn "+name,1);
     Item.setCategory(id,3)
     spawner.push(id);
 }
+setNewSpawner(2100,"spawn_egg",6,"Baby Creeper");
+setNewSpawner(2101,"spawn_egg",9,"Baby Skeleton");
+var spawner = [];
+
 
 function useItem(x,y,z,i,b,s) {
     var sides=[[x,y-1,z],[x,y+1,z],[x,y,z-1],[x,y,z+1],[x-1,y,z],[x+1,y,z]];
