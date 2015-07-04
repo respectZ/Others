@@ -1,6 +1,6 @@
 ModPE.overrideTexture("images/mob/babycreeper.png","https://dl.dropboxusercontent.com/s/uvwjqtxjflyp7s7/babycreeper.png?dl=0")
 ModPE.overrideTexture("images/mob/babyskeleton.png","https://dl.dropboxusercontent.com/s/xf2uoxadl8z36q3/babyskeleton.png?dl=0")
-ModPE.overrideTexture("images/mob/babyenderman.png","https://dl.dropboxusercontent.com/s/q9knz5ko0lwlcyu/babyenderman.png?dl=0")
+ModPE.overrideTexture("images/mob/babyenderman.png","https://dl.dropboxusercontent.com/s/w91rjc6nma7ybfb/babyenderman2.png?dl=0")
 function addbabycreeperRenderType(renderer){
 var model = renderer.getModel();
 var head = model.getPart("head").clear();
@@ -56,7 +56,7 @@ var rArm = model.getPart("rightArm").clear();
 var lArm = model.getPart("leftArm").clear();
 var rLeg = model.getPart("rightLeg").clear();
 var lLeg = model.getPart("leftLeg").clear();
-body.setTextureOffset( 5, 5);
+body.setTextureOffset( -1, 0);
 body.addBox(-2,7,-3, 5, 5, 5);
 body.setTextureOffset( 33, 23);
 body.addBox(-1,12,-2, 3, 6, 3);
