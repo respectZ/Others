@@ -56,7 +56,7 @@ var rArm = model.getPart("rightArm").clear();
 var lArm = model.getPart("leftArm").clear();
 var rLeg = model.getPart("rightLeg").clear();
 var lLeg = model.getPart("leftLeg").clear();
-body.setTextureOffset( 0, 0,true);
+body.setTextureOffset( 0, 8,true);
 body.addBox(-1,12,-1.5, 3, 6, 3);
 body.setTextureOffset(0, 8, true);
 body.addBox(-2,12,-0.5, 1, 8, 1);
@@ -66,7 +66,7 @@ body.setTextureOffset(0, 8, true);
 body.addBox(-1,18,-0.5, 1, 6, 1);
 body.setTextureOffset(0, 8, true);
 body.addBox(1,18,-0.5, 1, 6, 1);
-body.setTextureOffset(0, 8, true);
+body.setTextureOffset(0, 0, true);
 body.addBox(-1.5,8,-2, 4, 4, 4);
 }
 var babyendermanRenderType = Renderer.createHumanoidRenderer();
@@ -80,7 +80,7 @@ setNewSpawner = function(id,tex,data,name) {
 setNewSpawner(2100,"spawn_egg",6,"Baby Creeper");
 setNewSpawner(2101,"spawn_egg",9,"Baby Skeleton");
 setNewSpawner(2102,"spawn_egg",0,"Baby Creeper (Jockey)");
-setNewSpawner(2103,"spawn_egg",0,"Baby Skeleton (Jockey)");
+//setNewSpawner(2103,"spawn_egg",0,"Baby Skeleton (Jockey)"); disabled because buggy
 setNewSpawner(2104,"spawn_egg",7,"Baby Enderman");
 
 
@@ -158,6 +158,13 @@ function randomSpawn(random) {
             Entity.setRenderType(skelety,babyskeletonRenderType.renderType);
             Entity.setCarriedItem(skelety,0,0,0);
             Entity.setCollisionSize(skelety,0.1,0.1);
+            break;
+        case 3:
+            var endery = Level.spawnMob(Player.getX()+20+0.5,Player.getY()+3,Player.getZ()+0.5,38,"mob/babyenderman.png");
+            Entity.setCarriedItem(endery,0,0,0);
+            Entity.setCollisionSize(endery,0.1,0.1);
+            Entity.setRenderType(endery,babyendermanRenderType.renderType);
+            break;
     }
 }
 
@@ -191,6 +198,6 @@ function leaveGame() {
 function newLevel() {
     var colors = [ChatColor.GREEN,ChatColor.AQUA,ChatColor.BLUE,ChatColor.RED,ChatColor.GOLD];
     for(var p in colors) {
-        ModPE.showTipMessage(colors[p]+"MiniMobs v0.1")
+        ModPE.showTipMessage(colors[p]+"MiniMobs v0.1 by respectZ")
     }
 }
