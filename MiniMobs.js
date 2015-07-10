@@ -306,7 +306,7 @@ function procCmd(cmd) {
         Entity.setAnimalAge(miniza,-24000);
         var zmpigy = Level.spawnMob(ax,ay,az,36);
         Entity.setAnimalAge(zmpigy,-24000);
-        var mheroz = Level.spawnMob(ax,ay,az,"mob/Herobrine.png");
+        var mheroz = Level.spawnMob(ax,ay,az,32,"mob/Herobrine.png");
         Entity.setHealth(mheroz,50);
         Entity.setCarriedItem(mheroz,276,1,0);
         Entity.setAnimalAge(mheroz,-24000);
