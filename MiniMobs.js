@@ -1,4 +1,4 @@
-//vnew
+//new
 ModPE.overrideTexture("images/mob/babycreeper.png","https://dl.dropboxusercontent.com/s/uvwjqtxjflyp7s7/babycreeper.png?dl=0")
 ModPE.overrideTexture("images/mob/babyskeleton.png","https://dl.dropboxusercontent.com/s/xf2uoxadl8z36q3/babyskeleton.png?dl=0")
 ModPE.overrideTexture("images/mob/babyenderman.png","https://dl.dropboxusercontent.com/s/w91rjc6nma7ybfb/babyenderman2.png?dl=0")
@@ -241,6 +241,7 @@ function checkMobs() {
 function leaveGame() {
     ready=false;
 }
+/*
 function deathHook(m,v) {
     //var spw;
     if(Entity.getMobSkin(v)=="mob/Herobrine.png") {
@@ -251,6 +252,7 @@ function deathHook(m,v) {
         setTile(Entity.getX(v),Entity.getY(v)+1,Entity.getZ(v),11)
     }
 }
+*/ // i disable it beacuse make crash
 function newLevel() {
     var colors = [ChatColor.GREEN,ChatColor.AQUA,ChatColor.BLUE,ChatColor.RED,ChatColor.GOLD];
     for(var p in colors) {
