@@ -1,4 +1,4 @@
-//newas
+//newity
 ModPE.overrideTexture("images/mob/babycreeper.png","https://dl.dropboxusercontent.com/s/uvwjqtxjflyp7s7/babycreeper.png?dl=0")
 ModPE.overrideTexture("images/mob/babyskeleton.png","https://dl.dropboxusercontent.com/s/xf2uoxadl8z36q3/babyskeleton.png?dl=0")
 ModPE.overrideTexture("images/mob/babyenderman.png","https://dl.dropboxusercontent.com/s/w91rjc6nma7ybfb/babyenderman2.png?dl=0")
@@ -85,7 +85,7 @@ setNewSpawner(2101,"spawn_egg",9,"Baby Skeleton");
 setNewSpawner(2102,"spawn_egg",0,"Baby Creeper (Jockey)");
 //setNewSpawner(2103,"spawn_egg",0,"Baby Skeleton (Jockey)"); disabled because buggy
 setNewSpawner(2104,"spawn_egg",7,"Baby Enderman");
-setNewSpawner(2105,"skull_steve",0,"Herobrine");
+setNewSpawner(2106,"skull_steve",0,"Baby Herobrine");
 setNewSpawner(2107,"spawn_egg",12,"Baby Zombie");
 setNewSpawner(2108,"spawn_egg",13,"Baby Zombie Pigman");
 setNewSpawner(2109,"spawn_egg",0,"Baby Zombie (Jockey)");
@@ -278,10 +278,11 @@ function procCmd(cmd) {
     if(cmd=="beta") {
         if(!beta) {
         beta=true;
-        setNewSpawner(2106,"skull_steve",0,"Baby Herobrine");
         clientMessage(ChatColor.DARK_RED+"BETA Mode enabled !!!")
         clientMessage(ChatColor.DARK_RED+"If a herobrine (not baby) died, it will crash your game\nto disable beta mode, restart your blocklauncher");
         clientMessage(ChatColor.DARK_RED+"Check your creative inventory");
+        setNewSpawner(2105,"skull_steve",0,"Herobrine");
+        Player.addItemCreativeInv(2105,1,0);
     } else {
         clientMessage("You already turn on beta mode");
     }
