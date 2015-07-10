@@ -1,4 +1,4 @@
-//newity
+//new
 ModPE.overrideTexture("images/mob/babycreeper.png","https://dl.dropboxusercontent.com/s/uvwjqtxjflyp7s7/babycreeper.png?dl=0")
 ModPE.overrideTexture("images/mob/babyskeleton.png","https://dl.dropboxusercontent.com/s/xf2uoxadl8z36q3/babyskeleton.png?dl=0")
 ModPE.overrideTexture("images/mob/babyenderman.png","https://dl.dropboxusercontent.com/s/w91rjc6nma7ybfb/babyenderman2.png?dl=0")
@@ -289,21 +289,24 @@ function procCmd(cmd) {
     }
     if(cmd=="babyparty") {
         clientMessage("You find easter egg !!");
-        var creepyz = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,33,"mob/babycreeper.png");
+        var ax = Player.getX()+0.5;
+        var ay = Player.getY()+1;
+        var az = Player.getZ()+0.5;
+        var creepyz = Level.spawnMob(ax,ay,az,33,"mob/babycreeper.png");
         Entity.setRenderType(creepyz,babycreeperRenderType.renderType);
         Entity.setCollisionSize(creepyz,0.1,0.1);
-        var skelez = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,34,"mob/babyskeleton.png");
+        var skelez = Level.spawnMob(ax,ay,az,34,"mob/babyskeleton.png");
         Entity.setRenderType(skelez,babyskeletonRenderType.renderType);
         Entity.setCarriedItem(skelez,0,0,0);
         Entity.setCollisionSize(skelez,0.1,0.1);
-        var menz = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,38,"mob/babyenderman.png");
+        var menz = Level.spawnMob(ax,ay,az,38,"mob/babyenderman.png");
         Entity.setCollisionSize(menz,0.1,0.1);
         Entity.setRenderType(menz,babyendermanRenderType.renderType);
-        var miniza = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,32);
+        var miniza = Level.spawnMob(ax,ay,az,32);
         Entity.setAnimalAge(miniza,-24000);
-        var zmpigy = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,36);
+        var zmpigy = Level.spawnMob(ax,ay,az,36);
         Entity.setAnimalAge(zmpigy,-24000);
-        var mheroz = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,32,"mob/Herobrine.png");
+        var mheroz = Level.spawnMob(ax,ay,az,"mob/Herobrine.png");
         Entity.setHealth(mheroz,50);
         Entity.setCarriedItem(mheroz,276,1,0);
         Entity.setAnimalAge(mheroz,-24000);
