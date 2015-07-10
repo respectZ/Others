@@ -1,17 +1,3 @@
-/*
-                    Red Eagle General License
-                       Version 3, 05/06/2015
-                       
-  You Are Not Allowed To Copying or Using Our Code Without Our Permission.
-  You Are Allowed To Copying or Using Our Code If You Are Have A Permisson From Leader Or Mods Creator.
-  Don't Claim Our Mods To Be Yours.
-  Don't Moditified Out Mods To Your Version.
-  
-  Mod Creator : respectZ
-  Mod Release Date : 4 July 2015
-  
-  By Team Red Eagle.
-*/
 ModPE.overrideTexture("images/mob/babycreeper.png","https://dl.dropboxusercontent.com/s/uvwjqtxjflyp7s7/babycreeper.png?dl=0")
 ModPE.overrideTexture("images/mob/babyskeleton.png","https://dl.dropboxusercontent.com/s/xf2uoxadl8z36q3/babyskeleton.png?dl=0")
 ModPE.overrideTexture("images/mob/babyenderman.png","https://dl.dropboxusercontent.com/s/w91rjc6nma7ybfb/babyenderman2.png?dl=0")
@@ -99,12 +85,11 @@ setNewSpawner(2102,"spawn_egg",0,"Baby Creeper (Jockey)");
 setNewSpawner(2104,"spawn_egg",7,"Baby Enderman");
 setNewSpawner(2105,"skull_steve",0,"Herobrine");
 setNewSpawner(2106,"skull_steve",0,"Baby Herobrine");
-/*
 setNewSpawner(2107,"spawn_egg",0,"Baby Zombie");
 setNewSpawner(2108,"spawn_egg",0,"Baby Zombie Pigman");
 setNewSpawner(2109,"spawn_egg",0,"Baby Zombie (Jockey)");
 setNewSpawner(2110,"spawn_egg",0,"Baby Zombie Pigman (Jockey)")
-*/
+
 
 
 function useItem(x,y,z,i,b,s) {
@@ -155,6 +140,26 @@ function useItem(x,y,z,i,b,s) {
                     Entity.setCarriedItem(mhero,276,1,0);
                     Entity.setAnimalAge(mhero,-24000);
                     Entity.setCollisionSize(mhero,0.1,0.1);
+                }
+                if(i==2107) {
+                    var miniz = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,32);
+                    Entity.setAnimalAge(miniz,-24000);
+                }
+                if(i==2108) {
+                    var zmpig = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,36);
+                    Entity.setAnimalAge(zmpig,-24000);
+                }
+                if(i==2109) {
+                    var minizz = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,32);
+                    Entity.setAnimalAge(minizz,-24000);
+                    var chickey = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,10);
+                    rideAnimal(minizz,chickey)
+                }
+                if(i==2110) {
+                    var zzmpig = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,36);
+                    Entity.setAnimalAge(zzmpig,-24000);
+                    var chick = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,10);
+                    rideAnimal(zzmpig,chick)
                 }
             } else {
                 if(i==2100) {
@@ -225,7 +230,8 @@ function checkMobs() {
             }
         }
         if(Entity.getMobSkin(ent)=="mob/Herobrine.png") {
-            Entity.setFireTicks(ent,-1);
+            Entity.setRenderType(ent,3);
+            Entity.setFireTicks(ent,0);
         }
     }
 }
@@ -250,7 +256,7 @@ function testHerobrine(x,y,z,i,b,s) {
             Entity.setCarriedItem(mhero,276,1,0);
             Entity.setAnimalAge(mhero,-24000);
             Entity.setCollisionSize(mhero,0.1,0.1);
-            var herobrine = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,32,"mob/Herobrine.png");
+            var herobrine = Level.spawnMob(x+0.5,y+1,z+0.5,32,"mob/Herobrine.png");
             Entity.setHealth(herobrine,50);
             Entity.setCarriedItem(herobrine,276,1,0);
         }
