@@ -1,3 +1,4 @@
+//new
 ModPE.overrideTexture("images/mob/babycreeper.png","https://dl.dropboxusercontent.com/s/uvwjqtxjflyp7s7/babycreeper.png?dl=0")
 ModPE.overrideTexture("images/mob/babyskeleton.png","https://dl.dropboxusercontent.com/s/xf2uoxadl8z36q3/babyskeleton.png?dl=0")
 ModPE.overrideTexture("images/mob/babyenderman.png","https://dl.dropboxusercontent.com/s/w91rjc6nma7ybfb/babyenderman2.png?dl=0")
@@ -130,12 +131,12 @@ function useItem(x,y,z,i,b,s) {
                     Entity.setRenderType(men,babyendermanRenderType.renderType);
                 }
                 if(i==2105) {
-                    var herobrine = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,36,"mob/Herobrine.png");
+                    var herobrine = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,32,"mob/Herobrine.png");
                     Entity.setHealth(herobrine,50);
                     Entity.setCarriedItem(herobrine,276,1,0);
                 }
                 if(i==2106) {
-                    var mhero = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,36,"mob/Herobrine.png");
+                    var mhero = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,32,"mob/Herobrine.png");
                     Entity.setHealth(mhero,50);
                     Entity.setCarriedItem(mhero,276,1,0);
                     Entity.setAnimalAge(mhero,-24000);
@@ -243,19 +244,19 @@ function leaveGame() {
 function deathHook(m,v) {
     if(Entity.getMobSkin(v)=="mob/Herobrine.png") {
         var spw = Math.floor(Math.random()*(7)+(3));
-        explode(Entity.getX(ent),Entity.getY(ent),Entity.getZ(ent),spw);
+        explode(Entity.getX(v),Entity.getY(v),Entity.getZ(v),spw);
         for(var n=0;n<10;n++) {
             var nus = Math.floor(Math.random()*(4)+(-4));
             var nu = Math.floor(Math.random()*(2)+(-2));
             var nua = Math.floor(Math.random()*(4)+(-4));
-            setTile(Entity.getX(ent)+nus,Entity.getY(ent)+nu,Entity.getZ(ent)+nua,9)
+            setTile(Entity.getX(v)+nus,Entity.getY(v)+nu,Entity.getZ(v)+nua,9)
         }
     }
 }
 function newLevel() {
     var colors = [ChatColor.GREEN,ChatColor.AQUA,ChatColor.BLUE,ChatColor.RED,ChatColor.GOLD];
     for(var p in colors) {
-        ModPE.showTipMessage(colors[p]+"MiniMobs v0.1 by respectZ")
+        ModPE.showTipMessage(colors[p]+"MiniMobs v0.2 by respectZ")
     }
 }
 
@@ -263,12 +264,12 @@ function testHerobrine(x,y,z,i,b,s) {
     if(getTile(x,y,z)==87&&getTile(x,y-1,z)==87&&getTile(x,y-2,z)==41&&getTile(x,y-3,z)==41) {
         if(i==259) {
             clientMessage(ChatColor.DARK_RED +"You don't know what you did...");
-            var mhero = Level.spawnMob(x+0.5,y+1,z+0.5,36,"mob/Herobrine.png");
+            var mhero = Level.spawnMob(x+0.5,y+1,z+0.5,32,"mob/Herobrine.png");
             Entity.setHealth(mhero,50);
             Entity.setCarriedItem(mhero,276,1,0);
             Entity.setAnimalAge(mhero,-24000);
             Entity.setCollisionSize(mhero,0.1,0.1);
-            var herobrine = Level.spawnMob(x+0.5,y+1,z+0.5,36,"mob/Herobrine.png");
+            var herobrine = Level.spawnMob(x+0.5,y+1,z+0.5,32,"mob/Herobrine.png");
             Entity.setHealth(herobrine,50);
             Entity.setCarriedItem(herobrine,276,1,0);
         }
