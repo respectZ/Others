@@ -1,4 +1,4 @@
-//new
+//newas
 ModPE.overrideTexture("images/mob/babycreeper.png","https://dl.dropboxusercontent.com/s/uvwjqtxjflyp7s7/babycreeper.png?dl=0")
 ModPE.overrideTexture("images/mob/babyskeleton.png","https://dl.dropboxusercontent.com/s/xf2uoxadl8z36q3/babyskeleton.png?dl=0")
 ModPE.overrideTexture("images/mob/babyenderman.png","https://dl.dropboxusercontent.com/s/w91rjc6nma7ybfb/babyenderman2.png?dl=0")
@@ -79,13 +79,13 @@ setNewSpawner = function(id,tex,data,name) {
     Item.setCategory(id,3)
     spawner.push(id);
 }
+var beta=false;
 setNewSpawner(2100,"spawn_egg",6,"Baby Creeper");
 setNewSpawner(2101,"spawn_egg",9,"Baby Skeleton");
 setNewSpawner(2102,"spawn_egg",0,"Baby Creeper (Jockey)");
 //setNewSpawner(2103,"spawn_egg",0,"Baby Skeleton (Jockey)"); disabled because buggy
 setNewSpawner(2104,"spawn_egg",7,"Baby Enderman");
 setNewSpawner(2105,"skull_steve",0,"Herobrine");
-setNewSpawner(2106,"skull_steve",0,"Baby Herobrine");
 setNewSpawner(2107,"spawn_egg",12,"Baby Zombie");
 setNewSpawner(2108,"spawn_egg",13,"Baby Zombie Pigman");
 setNewSpawner(2109,"spawn_egg",0,"Baby Zombie (Jockey)");
@@ -240,6 +240,7 @@ function checkMobs() {
 
 function leaveGame() {
     ready=false;
+    beta=false;
 }
 /*
 function deathHook(m,v) {
@@ -269,9 +270,42 @@ function testHerobrine(x,y,z,i,b,s) {
             Entity.setCarriedItem(mhero,276,1,0);
             Entity.setAnimalAge(mhero,-24000);
             Entity.setCollisionSize(mhero,0.1,0.1);
-            var herobrine = Level.spawnMob(x+0.5,y+1,z+0.5,32,"mob/Herobrine.png");
-            Entity.setHealth(herobrine,50);
-            Entity.setCarriedItem(herobrine,276,1,0);
         }
+    }
+}
+
+function procCmd(cmd) {
+    if(cmd=="beta") {
+        if(!beta) {
+        beta=true;
+        setNewSpawner(2106,"skull_steve",0,"Baby Herobrine");
+        clientMessage(ChatColor.DARK_RED+"BETA Mode enabled !!!")
+        clientMessage(ChatColor.DARK_RED+"If a herobrine (not baby) died, it will crash your game\nto disable beta mode, restart your blocklauncher");
+        clientMessage(ChatColor.DARK_RED+"Check your creative inventory");
+    } else {
+        clientMessage("You already turn on beta mode");
+    }
+    }
+    if(cmd=="babyparty") {
+        clientMessage("You find easter egg !!");
+        var creepyz = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,33,"mob/babycreeper.png");
+        Entity.setRenderType(creepyz,babycreeperRenderType.renderType);
+        Entity.setCollisionSize(creepyz,0.1,0.1);
+        var skelez = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,34,"mob/babyskeleton.png");
+        Entity.setRenderType(skelez,babyskeletonRenderType.renderType);
+        Entity.setCarriedItem(skelez,0,0,0);
+        Entity.setCollisionSize(skelez,0.1,0.1);
+        var menz = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,38,"mob/babyenderman.png");
+        Entity.setCollisionSize(menz,0.1,0.1);
+        Entity.setRenderType(menz,babyendermanRenderType.renderType);
+        var miniza = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,32);
+        Entity.setAnimalAge(miniza,-24000);
+        var zmpigy = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,36);
+        Entity.setAnimalAge(zmpigy,-24000);
+        var mheroz = Level.spawnMob(sides[s][0]+0.5,sides[s][1],sides[s][2]+0.5,32,"mob/Herobrine.png");
+        Entity.setHealth(mheroz,50);
+        Entity.setCarriedItem(mheroz,276,1,0);
+        Entity.setAnimalAge(mheroz,-24000);
+        Entity.setCollisionSize(mheroz,0.1,0.1);
     }
 }
